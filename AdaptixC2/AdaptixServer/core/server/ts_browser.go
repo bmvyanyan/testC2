@@ -42,6 +42,35 @@ func (ts *Teamserver) TsClientGuiDisksWindows(taskData adaptix.TaskData, drives 
 	ts.TsSyncClient(task.Client, packet)
 }
 
+// TsClientGuiDisks preserves compatibility with plugins that still send
+// pre-marshaled Windows drive listings as JSON.
+func (ts *Teamserver) TsClientGuiDisks(taskData adaptix.TaskData, jsonDrives string) {
+	value, ok := ts.Agents.Get(taskData.AgentId)
+	if !ok {
+		return
+	}
+	agent := value.(*Agent)
+
+	value, ok = agent.RunningTasks.Get(taskData.TaskId)
+	if !ok {
+		return
+	}
+	task := value.(adaptix.TaskData)
+
+	if task.Type != adaptix.TASK_TYPE_BROWSER {
+		return
+	}
+
+	agent.RunningTasks.Delete(taskData.TaskId)
+
+	if taskData.MessageType != CONSOLE_OUT_ERROR && taskData.MessageType != CONSOLE_OUT_LOCAL_ERROR {
+		taskData.Message = "Status: OK"
+	}
+
+	packet := CreateSpBrowserDisks(taskData, jsonDrives)
+	ts.TsSyncClient(task.Client, packet)
+}
+
 func (ts *Teamserver) TsClientGuiFilesWindows(taskData adaptix.TaskData, path string, files []adaptix.ListingFileDataWin) {
 	jsonFiles, err := json.Marshal(files)
 	if err != nil {

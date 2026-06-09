@@ -67,16 +67,16 @@ include CMakeFiles/AdaptixClient_autogen_timestamp_deps.dir/compiler_depend.make
 include CMakeFiles/AdaptixClient_autogen_timestamp_deps.dir/progress.make
 
 CMakeFiles/AdaptixClient_autogen_timestamp_deps: Libs/kddockwidgets/libkddockwidgets.a
-CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.4.2
-CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
-CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6WebSockets.so.6.4.2
-CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
 CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Qml.so.6.4.2
+CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
 CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
-CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Sql.so.6.4.2
+CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.4.2
+CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
 CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libcrypto.so
 CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
+CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Sql.so.6.4.2
 CMakeFiles/AdaptixClient_autogen_timestamp_deps: Libs/qlementine/lib/libqlementine.a
+CMakeFiles/AdaptixClient_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6WebSockets.so.6.4.2
 
 AdaptixClient_autogen_timestamp_deps: CMakeFiles/AdaptixClient_autogen_timestamp_deps
 AdaptixClient_autogen_timestamp_deps: CMakeFiles/AdaptixClient_autogen_timestamp_deps.dir/build.make

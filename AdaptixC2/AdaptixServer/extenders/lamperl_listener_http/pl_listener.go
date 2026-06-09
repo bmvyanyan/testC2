@@ -13,7 +13,7 @@ import (
 // Called by Adaptix when user submits the listener creation form.
 // Checks that all required fields are present and valid.
 // Returns error if validation fails, nil if configuration is valid.
-func (m *ModuleExtender) HandlerListenerValid(data string) error {
+func validConfig(data string) error {
 
 	/// START CODE HERE
 
@@ -56,7 +56,7 @@ func (m *ModuleExtender) HandlerListenerValid(data string) error {
 //   - customData: Serialized config to persist across restarts
 //   - listenerObject: The actual HTTP server instance
 //   - error: If initialization or startup fails
-func (m *ModuleExtender) HandlerCreateListenerDataAndStart(name string, configData string, listenerCustomData []byte) (adaptix.ListenerData, []byte, any, error) {
+func HandlerCreateListenerData(name string, configData string, listenerCustomData []byte) (adaptix.ListenerData, []byte, *HTTP, error) {
 	var (
 		listenerData adaptix.ListenerData
 		customdData  []byte
@@ -70,9 +70,21 @@ func (m *ModuleExtender) HandlerCreateListenerDataAndStart(name string, configDa
 		err      error
 	)
 
-	err = json.Unmarshal([]byte(configData), &conf)
-	if err != nil {
-		return listenerData, customdData, nil, err
+	if listenerCustomData == nil {
+		err = validConfig(configData)
+		if err != nil {
+			return listenerData, customdData, nil, err
+		}
+
+		err = json.Unmarshal([]byte(configData), &conf)
+		if err != nil {
+			return listenerData, customdData, nil, err
+		}
+	} else {
+		err = json.Unmarshal(listenerCustomData, &conf)
+		if err != nil {
+			return listenerData, customdData, nil, err
+		}
 	}
 
 	listener = &HTTP{
@@ -81,16 +93,11 @@ func (m *ModuleExtender) HandlerCreateListenerDataAndStart(name string, configDa
 		Active: false,
 	}
 
-	err = listener.Start(ModuleObject.ts)
-	if err != nil {
-		return listenerData, customdData, nil, err
-	}
-
 	listenerData = adaptix.ListenerData{
 		BindHost:  conf.HostBind,
 		BindPort:  fmt.Sprintf("%d", conf.PortBind),
 		AgentAddr: conf.CallbackAddress,
-		Status:    "Listen",
+		Status:    "Stopped",
 	}
 
 	// Save config to customData
@@ -108,50 +115,44 @@ func (m *ModuleExtender) HandlerCreateListenerDataAndStart(name string, configDa
 
 // HandlerEditListenerData updates an existing listener's configuration.
 // Currently unimplemented - listener must be stopped and recreated to change config.
-func (m *ModuleExtender) HandlerEditListenerData(name string, listenerObject any, configData string) (adaptix.ListenerData, []byte, bool) {
+func HandlerEditListenerData(listener *HTTP, configData string) (adaptix.ListenerData, []byte, error) {
 	var (
 		listenerData adaptix.ListenerData
 		customdData  []byte
-		ok           bool = false
+		conf         HTTPConfig
+		err          error
 	)
 
 	/// START CODE HERE
 
-	/// END CODE
-
-	return listenerData, customdData, ok
-}
-
-// HandlerListenerStop gracefully shuts down a running listener.
-// Called when user stops a listener from the Adaptix UI.
-// Parameters:
-//   - name: Listener identifier (unused in this implementation)
-//   - listenerObject: The HTTP server instance to stop
-//
-// Returns: true if stopped successfully, false and error otherwise
-func (m *ModuleExtender) HandlerListenerStop(name string, listenerObject any) (bool, error) {
-	var (
-		err error = nil
-		ok  bool  = false
-	)
-
-	/// START CODE HERE
-
-	listener, valid := listenerObject.(*HTTP)
-	if !valid {
-		return false, errors.New("invalid listener object")
-	}
-
-	err = listener.Stop()
+	err = json.Unmarshal([]byte(configData), &conf)
 	if err != nil {
-		return false, err
+		return listenerData, customdData, err
 	}
 
-	ok = true
+	listener.Config.CallbackAddress = conf.CallbackAddress
+	listener.Config.ApiPath = conf.ApiPath
+
+	listenerData = adaptix.ListenerData{
+		BindHost:  listener.Config.HostBind,
+		BindPort:  fmt.Sprintf("%d", listener.Config.PortBind),
+		AgentAddr: listener.Config.CallbackAddress,
+		Status:    "Listen",
+	}
+	if !listener.Active {
+		listenerData.Status = "Closed"
+	}
+
+	var buffer bytes.Buffer
+	err = json.NewEncoder(&buffer).Encode(listener.Config)
+	if err != nil {
+		return listenerData, customdData, err
+	}
+	customdData = buffer.Bytes()
 
 	/// END CODE
 
-	return ok, err
+	return listenerData, customdData, nil
 }
 
 // HandlerListenerGetProfile returns the listener's current configuration.
@@ -161,23 +162,17 @@ func (m *ModuleExtender) HandlerListenerStop(name string, listenerObject any) (b
 //   - listenerObject: The HTTP server instance
 //
 // Returns: JSON-encoded configuration and true if successful
-func (m *ModuleExtender) HandlerListenerGetProfile(name string, listenerObject any) ([]byte, bool) {
-	var (
-		object bytes.Buffer
-		ok     bool = false
-	)
+func HandlerListenerGetProfile(listener *HTTP) ([]byte, error) {
+	var object bytes.Buffer
 
 	/// START CODE HERE
 
-	listener, valid := listenerObject.(*HTTP)
-	if !valid || listener.Name != name {
-		return object.Bytes(), false
+	err := json.NewEncoder(&object).Encode(listener.Config)
+	if err != nil {
+		return nil, err
 	}
-
-	_ = json.NewEncoder(&object).Encode(listener.Config)
-	ok = true
 
 	/// END CODE
 
-	return object.Bytes(), ok
+	return object.Bytes(), nil
 }

@@ -1,9 +1,9 @@
 module adaptix_listener_lamperl_http
 
-go 1.24.4
+go 1.25.4
 
 require (
-	github.com/Adaptix-Framework/axc2 v0.9.0
+	github.com/Adaptix-Framework/axc2 v1.2.0
 	github.com/gin-gonic/gin v1.11.0
 )
 

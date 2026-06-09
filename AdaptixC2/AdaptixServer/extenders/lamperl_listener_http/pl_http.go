@@ -118,9 +118,9 @@ func (handler *HTTP) processRequest(ctx *gin.Context, ts Teamserver) {
 		agentType, agentId, len(beat), len(bodyData))
 
 	// Create agent if doesn't exist
-	if !ModuleObject.ts.TsAgentIsExists(agentId) {
+	if !Ts.TsAgentIsExists(agentId) {
 		fmt.Printf("[LISTENER] Creating new agent: %s\n", agentId)
-		_, err = ModuleObject.ts.TsAgentCreate(agentType, agentId, beat, handler.Name, externalIP, true)
+		_, err = Ts.TsAgentCreate(agentType, agentId, beat, handler.Name, externalIP, true)
 		if err != nil {
 			fmt.Printf("[LISTENER ERROR] Failed to create agent: %v\n", err)
 			ctx.Writer.WriteHeader(http.StatusNotFound)
@@ -132,15 +132,15 @@ func (handler *HTTP) processRequest(ctx *gin.Context, ts Teamserver) {
 	}
 
 	// Update agent's last check-in time
-	_ = ModuleObject.ts.TsAgentSetTick(agentId)
+	_ = Ts.TsAgentSetTick(agentId, handler.Name)
 
 	// Process agent data (task results)
 	fmt.Printf("[LISTENER] Processing agent data...\n")
-	_ = ModuleObject.ts.TsAgentProcessData(agentId, bodyData)
+	_ = Ts.TsAgentProcessData(agentId, bodyData)
 
 	// Get tasks for agent
 	fmt.Printf("[LISTENER] Getting tasks for agent...\n")
-	responseData, err = ModuleObject.ts.TsAgentGetHostedAll(agentId, 0x1900000) // 25 MB
+	responseData, err = Ts.TsAgentGetHostedAll(agentId, 0x1900000) // 25 MB
 	if err != nil {
 		fmt.Printf("[LISTENER ERROR] Failed to get tasks: %v\n", err)
 		ctx.Writer.WriteHeader(http.StatusNotFound)

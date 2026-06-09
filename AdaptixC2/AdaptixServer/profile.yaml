@@ -17,6 +17,8 @@ Teamserver:
     - "extenders/beacon_agent/config.yaml"
     - "extenders/gopher_listener_tcp/config.yaml"
     - "extenders/gopher_agent/config.yaml"
+    - "extenders/lamper_agent/config.json"
+    - "extenders/lamper_listener_http/config.json"
   axscripts:
 #    - "Extension-Kit/extension-kit.axs"
   access_token_live_hours: 12
