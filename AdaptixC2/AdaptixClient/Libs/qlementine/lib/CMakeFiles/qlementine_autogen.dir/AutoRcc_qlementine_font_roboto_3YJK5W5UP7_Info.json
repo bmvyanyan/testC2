@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/qlementine_autogen",
+	"CMAKE_BINARY_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient",
+	"CMAKE_CURRENT_BINARY_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib",
+	"CMAKE_SOURCE_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient",
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/qlementine_autogen/include",
+	"INPUTS" : 
+	[
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/resources/fonts/roboto-mono/RobotoMono-BoldItalic.ttf",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/resources/fonts/roboto-mono/RobotoMono-Italic.ttf",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/resources/fonts/roboto-mono/RobotoMono-Bold.ttf",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/resources/fonts/roboto-mono/RobotoMono-Regular.ttf"
+	],
+	"LOCK_FILE" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/CMakeFiles/qlementine_autogen.dir/AutoRcc_qlementine_font_roboto_3YJK5W5UP7_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "qlementine_font_roboto" ],
+	"OUTPUT_CHECKSUM" : "3YJK5W5UP7",
+	"OUTPUT_NAME" : "qrc_qlementine_font_roboto.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/CMakeFiles/qlementine_autogen.dir/AutoRcc_qlementine_font_roboto_3YJK5W5UP7_Used.txt",
+	"SOURCE" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/qlementine/lib/resources/qlementine_font_roboto.qrc",
+	"VERBOSITY" : 0
+}
