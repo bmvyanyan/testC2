@@ -1,0 +1,9 @@
+{
+  "extender_type": "listener",
+  "extender_file": "CStesthihi_http.so",
+  "ax_file": "ax_config.axs",
+
+  "listener_name": "CStesthihiHTTP",
+  "listener_type": "external",
+  "protocol": "http"
+}
