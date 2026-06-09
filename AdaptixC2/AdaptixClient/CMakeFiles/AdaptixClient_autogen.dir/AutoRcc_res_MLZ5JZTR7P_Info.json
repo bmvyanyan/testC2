@@ -1,0 +1,37 @@
+{
+	"BUILD_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient/AdaptixClient_autogen",
+	"CMAKE_BINARY_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient",
+	"CMAKE_CURRENT_BINARY_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient",
+	"CMAKE_SOURCE_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient",
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/workspaces/testC2/AdaptixC2/AdaptixClient/AdaptixClient_autogen/include",
+	"INPUTS" : 
+	[
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/color-schemes/MaterialOcean.colorscheme",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/color-schemes/Hacktober.colorscheme",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/color-schemes/iTerm2 Default.colorscheme",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/color-schemes/Aardvark Blue.colorscheme",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/color-schemes/iTerm2 Light Background.colorscheme",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/linux_console.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/linux_default.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/solaris.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/vt100.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/vt420pc.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/x11.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/windows_winpty.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/macos_macbook.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/macos_default.keytab",
+		"/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/kb-layouts/windows_conpty.keytab"
+	],
+	"LOCK_FILE" : "/workspaces/testC2/AdaptixC2/AdaptixClient/CMakeFiles/AdaptixClient_autogen.dir/AutoRcc_res_MLZ5JZTR7P_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "res" ],
+	"OUTPUT_CHECKSUM" : "MLZ5JZTR7P",
+	"OUTPUT_NAME" : "qrc_res.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/workspaces/testC2/AdaptixC2/AdaptixClient/CMakeFiles/AdaptixClient_autogen.dir/AutoRcc_res_MLZ5JZTR7P_Used.txt",
+	"SOURCE" : "/workspaces/testC2/AdaptixC2/AdaptixClient/Libs/Konsole/res.qrc",
+	"VERBOSITY" : 0
+}
